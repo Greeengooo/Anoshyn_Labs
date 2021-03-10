@@ -5,6 +5,7 @@ namespace ConsoleApp1
 {
 	class Program
 	{
+		//Main test class
 		static void Main(string[] args)
 		{
 			User user1 = new User();
@@ -24,6 +25,7 @@ namespace ConsoleApp1
 			user.Wallet.Currency = CurrencyType.Dollar;
 			user.Wallet.AddTransaction(tr1);
 			user.Wallet.AddTransaction(tr2);
+			
 
 			Console.WriteLine(user.Wallet.GetMonthIncome());
 
