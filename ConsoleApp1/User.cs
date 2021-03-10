@@ -10,8 +10,9 @@ namespace ConsoleApp1
 		private string _lastName;
 		private string _firstName;
 		private string _email;
-        private List<Wallet> _wallets;
-        private List<Category> _categories;
+        private Wallet _wallet;
+        private List<Wallet>? _wallets;
+        private List<Category>? _categories;
 
 
 
@@ -21,14 +22,12 @@ namespace ConsoleApp1
             _wallets = new List<Wallet>();
             _categories = new List<Category>();
         }
-        public User(int id, string lastName, string firstName, string email, List<Wallet> wallets, List<Category> categories)
+        public User(int id, string lastName, string firstName, string email) : this()
         {
             this._id = id;
             this._lastName = lastName;
             this._firstName = firstName;
             this._email = email;
-           this. _wallets = wallets;
-           this. _categories = categories;
         }
 
 
@@ -82,6 +81,22 @@ namespace ConsoleApp1
             }
         }
 
+        public Wallet Wallet
+        {
+            get
+            {
+                return _wallet;
+            }
+            set
+            {
+                if (_wallet == null)
+                {
+                    _wallet = value;
+                    _wallet.Owner = this;
+                    _wallet.Status = "owner";
+                }
+            }
+        }
         public List<Wallet> Wallets
         {
             get
@@ -113,6 +128,18 @@ namespace ConsoleApp1
                 }
                 return result;
             }
+        }
+
+        public void ShareWallet(Wallet wallet, User user)
+        {
+            Wallet transfer = wallet;
+            transfer.Status = "user";
+            user.AddWallet(transfer);
+        }
+
+        public void AddWallet(Wallet wallet)
+        {
+            _wallets.Add(wallet);
         }
 
         public override bool Validate()
