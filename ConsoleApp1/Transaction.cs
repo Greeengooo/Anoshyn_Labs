@@ -1,19 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.IO;
 
 namespace ConsoleApp1
 {
 	public class Transaction : EntityBase
 	{
 		private int _id;
-		private decimal _sum;
+		private double _sum;
 		private CurrencyType _currency;
-		private string _category;
-		private string? _description;
+		private Category _category;
+        private string? _description;
 		private DateTime _date;
+		private FileInfo attachment;
 		public Transaction() {}
-		public Transaction(int id, decimal sum, CurrencyType currency, string description,  DateTime date)
+		public Transaction(int id, double sum, CurrencyType currency, string description,  DateTime date)
 		{
 			this._id = id;
 			this._sum = sum;
@@ -35,7 +35,7 @@ namespace ConsoleApp1
 		}
 
 
-		public decimal Sum
+		public double Sum
 		{
 			get
 			{
@@ -59,7 +59,7 @@ namespace ConsoleApp1
 			}
 		}
 
-		public string Category
+		public Category Category
 		{
 			get
 			{
@@ -92,6 +92,18 @@ namespace ConsoleApp1
 			set
 			{
 				_date = value;
+			}
+		}
+
+		public FileInfo Attachment
+		{
+			get
+			{
+				return attachment;
+			}
+			set
+			{
+				attachment = value;
 			}
 		}
 

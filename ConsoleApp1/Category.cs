@@ -7,8 +7,15 @@ namespace ConsoleApp1
 	public class Category : EntityBase
 	{
 		private string _name;
-		private string? _description;
+		private string _description;
 		private string _colour;
+
+		public Category(string name, string description, string colour)
+        {
+			this._name = name;
+			this._description = description;
+			this._colour = colour;
+        }
 
 		public string Name
 		{

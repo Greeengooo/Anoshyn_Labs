@@ -24,3 +24,4 @@ namespace ConsoleApp1
 
         public abstract bool Validate();
     }
+}
